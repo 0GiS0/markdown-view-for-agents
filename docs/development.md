@@ -2,6 +2,24 @@
 
 ## Local checks
 
+When you open the repository in the dev container, it installs the git hooks automatically.
+
+The dev container also starts a local WordPress stack for plugin testing:
+
+- WordPress: `http://localhost:8080`
+- Admin user: `admin`
+- Admin password: `admin`
+- Database service: `db`
+
+On container start, the workspace runs a small bootstrap script that waits for WordPress, installs the site if needed, and activates this plugin automatically.
+
+If you need to inspect or manage the local site from the workspace container, WP-CLI is available and the shared WordPress root is mounted at `/srv/wordpress`:
+
+```bash
+wp plugin list --path=/srv/wordpress
+wp option get siteurl --path=/srv/wordpress
+```
+
 Install the PHP development tools:
 
 ```bash

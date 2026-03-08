@@ -36,6 +36,34 @@
       "command": "./install-git-hooks.sh",
       "dependsOn": "install git hooks",
       "problemMatcher": []
+    },
+    {
+      "label": "lint php",
+      "type": "shell",
+      "command": "composer",
+      "args": [
+        "lint:php"
+      ],
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "lint all",
+      "type": "shell",
+      "command": "composer",
+      "args": [
+        "lint"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "fix php style",
+      "type": "shell",
+      "command": "vendor/bin/phpcbf",
+      "args": [
+        "--standard=phpcs.xml.dist"
+      ],
+      "problemMatcher": []
     }
   ]
 }
