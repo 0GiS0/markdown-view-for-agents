@@ -24,7 +24,7 @@ class MD_For_Agents_Markdown_Converter {
         }
 
         $frontmatter = $this->build_frontmatter( $post );
-        $content     = apply_filters( 'the_content', $post->post_content );
+        $content     = $this->render_post_content( $post );
         $markdown    = $this->html_to_markdown( $content );
 
         $result = $frontmatter . "\n# " . get_the_title( $post ) . "\n\n" . $markdown;
@@ -74,6 +74,10 @@ class MD_For_Agents_Markdown_Converter {
         $md = $this->convert_headings( $md );
         $md = $this->convert_blockquotes( $md );
         $md = $this->convert_code_blocks( $md );
+
+        $code_blocks = array();
+        $md          = $this->protect_fenced_code_blocks( $md, $code_blocks );
+
         $md = $this->convert_lists( $md );
         $md = $this->convert_tables( $md );
         $md = $this->convert_horizontal_rules( $md );
@@ -93,10 +97,29 @@ class MD_For_Agents_Markdown_Converter {
         // Decode HTML entities.
         $md = html_entity_decode( $md, ENT_QUOTES, 'UTF-8' );
 
+        $md = $this->restore_protected_blocks( $md, $code_blocks );
+
         // Normalize whitespace: collapse 3+ newlines to 2.
         $md = preg_replace( '/\n{3,}/', "\n\n", $md );
 
         return trim( $md ) . "\n";
+    }
+
+    /**
+     * Render post content while avoiding front-end-only the_content injections.
+     */
+    private function render_post_content( $post ) {
+        $content = $post->post_content;
+
+        if ( function_exists( 'do_blocks' ) ) {
+            $content = do_blocks( $content );
+        }
+
+        $content = shortcode_unautop( $content );
+        $content = do_shortcode( $content );
+        $content = wpautop( $content );
+
+        return $content;
     }
 
     // ──────────────────────────────────────────
@@ -286,6 +309,26 @@ class MD_For_Agents_Markdown_Converter {
 
     private function convert_line_breaks( $html ) {
         return preg_replace( '/<br\s*\/?>/i', "  \n", $html );
+    }
+
+    private function protect_fenced_code_blocks( $markdown, &$blocks ) {
+        return preg_replace_callback(
+            '/```[\s\S]*?```/',
+            function ( $matches ) use ( &$blocks ) {
+                $placeholder            = '[[MD_FOR_AGENTS_CODE_BLOCK_' . count( $blocks ) . ']]';
+                $blocks[ $placeholder ] = $matches[0];
+                return $placeholder;
+            },
+            $markdown
+        );
+    }
+
+    private function restore_protected_blocks( $markdown, $blocks ) {
+        if ( empty( $blocks ) ) {
+            return $markdown;
+        }
+
+        return strtr( $markdown, $blocks );
     }
 
     /**

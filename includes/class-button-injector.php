@@ -20,7 +20,7 @@ class MD_For_Agents_Button_Injector {
      * Prepend the markdown button to single post/page content.
      */
     public function inject_button( $content ) {
-        if ( ! is_singular( array( 'post', 'page' ) ) || ! is_main_query() ) {
+        if ( ! $this->should_inject_button() ) {
             return $content;
         }
 
@@ -41,6 +41,28 @@ class MD_For_Agents_Button_Injector {
         );
 
         return $button . $content;
+    }
+
+    /**
+     * Only inject on the main content of the currently queried singular post.
+     */
+    private function should_inject_button() {
+        if ( is_admin() || ! is_singular( array( 'post', 'page' ) ) ) {
+            return false;
+        }
+
+        if ( ! is_main_query() || ! in_the_loop() ) {
+            return false;
+        }
+
+        $current_post_id = get_the_ID();
+        $queried_post_id = get_queried_object_id();
+
+        if ( ! $current_post_id || ! $queried_post_id ) {
+            return false;
+        }
+
+        return (int) $current_post_id === (int) $queried_post_id;
     }
 
     /**
