@@ -6,8 +6,8 @@
  *
  * Plugin Name:       Markdown for AI Agents
  * Plugin URI:        https://github.com/0GiS0/wp-markdown-for-agents
- * Description:       Adds a button to posts that serves content as Markdown for AI agents. Append ?format=markdown to any post URL to get the Markdown version.
- * Version:           1.0.0
+ * Description:       Serve WordPress posts and pages as clean Markdown for AI agents via a button or ?format=markdown.
+ * Version:           1.0.1
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Gisela Torres
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MD_FOR_AGENTS_VERSION', '1.0.0' );
+define( 'MD_FOR_AGENTS_VERSION', '1.0.1' );
 define( 'MD_FOR_AGENTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MD_FOR_AGENTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
