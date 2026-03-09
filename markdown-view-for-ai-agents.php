@@ -4,24 +4,24 @@
  *
  * @package MD_For_Agents
  *
- * Plugin Name:       Markdown for AI Agents
- * Plugin URI:        https://github.com/0GiS0/wp-markdown-for-agents
+ * Plugin Name:       Markdown View for AI Agents
+ * Plugin URI:        https://github.com/0GiS0/markdown-view-for-agents
  * Description:       Serve WordPress posts and pages as clean Markdown for AI agents via a button or ?format=markdown.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Gisela Torres
  * Author URI:        https://www.returngis.net
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       markdown-for-ai-agents
+ * Text Domain:       markdown-view-for-ai-agents
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MD_FOR_AGENTS_VERSION', '1.0.2' );
+define( 'MD_FOR_AGENTS_VERSION', '1.0.3' );
 define( 'MD_FOR_AGENTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MD_FOR_AGENTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

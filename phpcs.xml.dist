@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="Markdown for AI Agents">
+<ruleset name="Markdown View for AI Agents">
   <description>PHP quality and security checks for the plugin.</description>
 
-  <file>markdown-for-ai-agents.php</file>
+  <file>markdown-view-for-ai-agents.php</file>
   <file>includes</file>
 
   <exclude-pattern>vendor/*</exclude-pattern>
