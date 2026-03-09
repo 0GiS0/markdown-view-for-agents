@@ -1,10 +1,10 @@
-=== Markdown for AI Agents ===
+=== Markdown View for AI Agents ===
 Contributors: inteligenciaartificial
 Tags: markdown, ai, agents, content, export
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Serve WordPress posts and pages as clean Markdown for AI agents and automation t
 
 == Description ==
 
-Markdown for AI Agents adds a small button to singular posts and pages so visitors, crawlers, and AI agents can open a clean Markdown version of the content.
+Markdown View for AI Agents adds a small button to singular posts and pages so visitors, crawlers, and AI agents can open a clean Markdown version of the content.
 
 The same Markdown output is also available programmatically by appending `?format=markdown` to a post or page URL.
 
@@ -35,7 +35,7 @@ Typical use cases:
 
 == Installation ==
 
-1. Upload the `markdown-for-ai-agents` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress admin.
+1. Upload the `markdown-view-for-ai-agents` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress admin.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Open any published post or page.
 4. Click the "View as Markdown" button, or append `?format=markdown` to the URL.
@@ -64,6 +64,10 @@ Yes. The plugin caches the generated Markdown for 1 hour using WordPress transie
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+
+Renamed the plugin for WordPress.org submission, aligned the distributed slug, and added a name-availability preflight to the release workflow.
+
 = 1.0.2 =
 
 Aligned the distributed plugin slug and WordPress.org assets, and improved local validation for Plugin Check.
@@ -78,8 +82,13 @@ Initial public release.
 
 == Changelog ==
 
+= 1.0.3 =
+* renamed the plugin to `Markdown View for AI Agents`
+* aligned the distributed slug with `markdown-view-for-ai-agents`
+* added a WordPress.org name availability check to the release guidance
+
 = 1.0.2 =
-* aligned the distributed plugin slug with `markdown-for-ai-agents`
+* aligned the distributed plugin slug with `markdown-view-for-ai-agents`
 * removed WordPress.org Plugin Check warnings from the plugin bootstrap
 * added Plugin Check support and SVG-to-PNG tooling to the dev container workflow
 

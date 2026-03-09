@@ -9,7 +9,7 @@ services:
       - wordpress-data:/srv/wordpress
       - plugins:/home/vscode/.local/share/plugins
       - plugins:/srv/wordpress/wp-content/plugins
-      - ..:/srv/wordpress/wp-content/plugins/markdown-for-ai-agents:cached
+      - ..:/srv/wordpress/wp-content/plugins/markdown-view-for-ai-agents:cached
     environment:
       COMPOSER_MEMORY_LIMIT: -1
       WORDPRESS_DB_HOST: db:3306
@@ -34,7 +34,7 @@ services:
     volumes:
       - wordpress-data:/var/www/html
       - plugins:/var/www/html/wp-content/plugins
-      - ..:/var/www/html/wp-content/plugins/markdown-for-ai-agents:cached
+      - ..:/var/www/html/wp-content/plugins/markdown-view-for-ai-agents:cached
     depends_on:
       - db
 

@@ -20,11 +20,13 @@ git push origin v1.0.1
 
 When you push a matching tag, GitHub Actions will:
 
-- Build `dist/markdown-for-ai-agents.zip`
+- Build `dist/markdown-view-for-ai-agents.zip`
 - Build a categorized changelog from merged pull requests
 - Create a GitHub Release automatically
 - Attach the plugin ZIP to that release
 
-For consistency, keep the plugin version in `markdown-for-ai-agents.php` aligned with the tag you publish.
+For consistency, keep the plugin version in `markdown-view-for-ai-agents.php` aligned with the tag you publish.
+
+Before any WordPress.org submission or marketplace-facing release, search the directory for the proposed plugin name and slug to avoid collisions with existing listings.
 
 The changelog is configured in `release-changelog-builder-config.json` and groups pull requests according to the repository labels, so the release notes depend on using labels consistently on PRs.

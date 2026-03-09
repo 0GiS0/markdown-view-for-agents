@@ -1,6 +1,6 @@
 {
-  "name": "0gis0/wp-markdown-for-agents",
-  "description": "Development tooling for the Markdown for AI Agents WordPress plugin.",
+  "name": "0gis0/markdown-view-for-agents",
+  "description": "Development tooling for the Markdown View for AI Agents WordPress plugin.",
   "type": "project",
   "require": {},
   "require-dev": {
