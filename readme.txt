@@ -2,9 +2,9 @@
 Contributors: 0gis0
 Tags: markdown, ai, agents, content, export
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,10 @@ Yes. The plugin caches the generated Markdown for 1 hour using WordPress transie
 
 == Upgrade Notice ==
 
+= 1.0.5 =
+
+Updated compatibility metadata for WordPress 7.0.
+
 = 1.0.4 =
 
 Addressed WordPress.org review feedback for contributor metadata and escaped generated Markdown output.
@@ -85,6 +89,13 @@ Improved WordPress.org readme content and public plugin metadata.
 Initial public release.
 
 == Changelog ==
+
+= 1.0.5 =
+* updated the `Tested up to` header to WordPress 7.0
+
+= 1.0.4 =
+* addressed WordPress.org review feedback for contributor metadata
+* escaped the generated Markdown output
 
 = 1.0.3 =
 * renamed the plugin to `Markdown View for AI Agents`
