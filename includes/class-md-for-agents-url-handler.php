@@ -58,7 +58,7 @@ class MD_For_Agents_URL_Handler {
 		header( 'Content-Type: text/markdown; charset=utf-8' );
 		header( 'X-Robots-Tag: noindex' );
 
-		echo $markdown; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo esc_html( $markdown );
 		exit;
 	}
 }

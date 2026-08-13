@@ -1,10 +1,10 @@
 === Markdown View for AI Agents ===
-Contributors: inteligenciaartificial
+Contributors: 0gis0
 Tags: markdown, ai, agents, content, export
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,10 @@ No. The button link uses `rel="nofollow"` and the Markdown response includes a `
 Yes. The plugin caches the generated Markdown for 1 hour using WordPress transients. The cache is cleared automatically when you update a post.
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+
+Addressed WordPress.org review feedback for contributor metadata and escaped generated Markdown output.
 
 = 1.0.3 =
 
