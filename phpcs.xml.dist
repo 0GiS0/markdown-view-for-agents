@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="Markdown View for AI Agents">
+<ruleset name="ReturnGIS Markdown View for AI Agents">
   <description>PHP quality and security checks for the plugin.</description>
 
-  <file>markdown-view-for-ai-agents.php</file>
+  <file>returngis-markdown-view-for-ai-agents.php</file>
   <file>includes</file>
 
   <exclude-pattern>vendor/*</exclude-pattern>

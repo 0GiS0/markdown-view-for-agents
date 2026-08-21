@@ -4,7 +4,7 @@ set -euo pipefail
 
 wp_path="${WP_PATH:-/srv/wordpress}"
 site_url="${SITE_URL:-http://localhost:8080}"
-site_title="${WORDPRESS_SITE_TITLE:-Markdown View for AI Agents}"
+site_title="${WORDPRESS_SITE_TITLE:-ReturnGIS Markdown View for AI Agents}"
 admin_user="${WORDPRESS_ADMIN_USER:-admin}"
 admin_password="${WORDPRESS_ADMIN_PASSWORD:-admin}"
 admin_email="${WORDPRESS_ADMIN_EMAIL:-admin@example.com}"
@@ -187,7 +187,7 @@ seed_sample_content() {
 		post \
 		code-blocks-and-tables \
 		'Code Blocks and Tables' \
-		"<!-- wp:paragraph --><p>This sample covers fenced code blocks and HTML tables converted into markdown tables.</p><!-- /wp:paragraph --><!-- wp:code --><pre class=\"wp-block-code\"><code lang=\"bash\">wp plugin activate markdown-view-for-ai-agents --path=/srv/wordpress
+		"<!-- wp:paragraph --><p>This sample covers fenced code blocks and HTML tables converted into markdown tables.</p><!-- /wp:paragraph --><!-- wp:code --><pre class=\"wp-block-code\"><code lang=\"bash\">wp plugin activate returngis-markdown-view-for-ai-agents --path=/srv/wordpress
 wp option get siteurl --path=/srv/wordpress</code></pre><!-- /wp:code --><!-- wp:table --><figure class=\"wp-block-table\"><table><thead><tr><th>Check</th><th>Expected result</th></tr></thead><tbody><tr><td>Code fence</td><td>Preserved with bash language</td></tr><tr><td>Table headers</td><td>Rendered as markdown table header row</td></tr></tbody></table></figure><!-- /wp:table -->" >/dev/null
 
 	upsert_post \
@@ -294,6 +294,6 @@ wp_cli option update blog_public 0 >/dev/null 2>&1 || true
 wp_cli rewrite structure '/%postname%/' >/dev/null 2>&1 || true
 wp_cli rewrite flush --hard >/dev/null 2>&1 || true
 wp_cli theme activate twentytwentythree >/dev/null 2>&1 || true
-wp_cli plugin activate markdown-view-for-ai-agents >/dev/null 2>&1 || true
+wp_cli plugin activate returngis-markdown-view-for-ai-agents >/dev/null 2>&1 || true
 wp_cli plugin activate plugin-check >/dev/null 2>&1 || true
 seed_sample_content

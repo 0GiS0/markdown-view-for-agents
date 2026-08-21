@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin settings page for the Markdown View for AI Agents plugin.
+ * Admin settings page for the ReturnGIS Markdown View for AI Agents plugin.
  *
  * @package MD_For_Agents
  */
@@ -54,8 +54,8 @@ class MD_For_Agents_Admin_Settings {
 	 */
 	public function add_settings_page() {
 		add_options_page(
-			__( 'Markdown View for AI Agents', 'markdown-view-for-ai-agents' ),
-			__( 'Markdown View', 'markdown-view-for-ai-agents' ),
+			__( 'ReturnGIS Markdown View for AI Agents', 'returngis-markdown-view-for-ai-agents' ),
+			__( 'Markdown View', 'returngis-markdown-view-for-ai-agents' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( $this, 'render_settings_page' )
@@ -78,14 +78,14 @@ class MD_For_Agents_Admin_Settings {
 
 		add_settings_section(
 			'md_for_agents_button_section',
-			__( 'Button settings', 'markdown-view-for-ai-agents' ),
+			__( 'Button settings', 'returngis-markdown-view-for-ai-agents' ),
 			'__return_null',
 			self::PAGE_SLUG
 		);
 
 		add_settings_field(
 			'button_text',
-			__( 'Button text', 'markdown-view-for-ai-agents' ),
+			__( 'Button text', 'returngis-markdown-view-for-ai-agents' ),
 			array( $this, 'render_button_text_field' ),
 			self::PAGE_SLUG,
 			'md_for_agents_button_section'
@@ -93,7 +93,7 @@ class MD_For_Agents_Admin_Settings {
 
 		add_settings_field(
 			'show_icon',
-			__( 'Show icon', 'markdown-view-for-ai-agents' ),
+			__( 'Show icon', 'returngis-markdown-view-for-ai-agents' ),
 			array( $this, 'render_show_icon_field' ),
 			self::PAGE_SLUG,
 			'md_for_agents_button_section'
@@ -101,7 +101,7 @@ class MD_For_Agents_Admin_Settings {
 
 		add_settings_field(
 			'custom_css_classes',
-			__( 'Custom CSS classes', 'markdown-view-for-ai-agents' ),
+			__( 'Custom CSS classes', 'returngis-markdown-view-for-ai-agents' ),
 			array( $this, 'render_custom_css_classes_field' ),
 			self::PAGE_SLUG,
 			'md_for_agents_button_section'
@@ -109,7 +109,7 @@ class MD_For_Agents_Admin_Settings {
 
 		add_settings_field(
 			'button_position',
-			__( 'Button position', 'markdown-view-for-ai-agents' ),
+			__( 'Button position', 'returngis-markdown-view-for-ai-agents' ),
 			array( $this, 'render_button_position_field' ),
 			self::PAGE_SLUG,
 			'md_for_agents_button_section'
@@ -191,7 +191,7 @@ class MD_For_Agents_Admin_Settings {
 			'md-agent-admin-preview',
 			'mdForAgentsAdmin',
 			array(
-				'defaultButtonText' => esc_html__( 'View as Markdown', 'markdown-view-for-ai-agents' ),
+				'defaultButtonText' => esc_html__( 'View as Markdown', 'returngis-markdown-view-for-ai-agents' ),
 				'currentSettings'   => $settings,
 			)
 		);
@@ -206,7 +206,7 @@ class MD_For_Agents_Admin_Settings {
 		}
 
 		$settings     = self::get_settings();
-		$default_text = esc_html__( 'View as Markdown', 'markdown-view-for-ai-agents' );
+		$default_text = esc_html__( 'View as Markdown', 'returngis-markdown-view-for-ai-agents' );
 		$button_text  = ! empty( $settings['button_text'] ) ? $settings['button_text'] : $default_text;
 		$show_icon    = '1' === $settings['show_icon'];
 		$css_classes  = $settings['custom_css_classes'];
@@ -231,7 +231,7 @@ class MD_For_Agents_Admin_Settings {
 				</div>
 
 				<div class="md-agent-admin-preview-panel">
-					<h2><?php esc_html_e( 'Preview', 'markdown-view-for-ai-agents' ); ?></h2>
+					<h2><?php esc_html_e( 'Preview', 'returngis-markdown-view-for-ai-agents' ); ?></h2>
 					<div class="md-agent-admin-preview-area">
 						<div id="md-agent-preview-container">
 							<div class="md-agent-button-wrapper">
@@ -257,7 +257,7 @@ class MD_For_Agents_Admin_Settings {
 	 */
 	public function render_button_text_field() {
 		$settings     = self::get_settings();
-		$default_text = esc_html__( 'View as Markdown', 'markdown-view-for-ai-agents' );
+		$default_text = esc_html__( 'View as Markdown', 'returngis-markdown-view-for-ai-agents' );
 		?>
 		<input
 			type="text"
@@ -271,7 +271,7 @@ class MD_For_Agents_Admin_Settings {
 			<?php
 			printf(
 				/* translators: %s: default button text */
-				esc_html__( 'Leave empty to use the default text: "%s".', 'markdown-view-for-ai-agents' ),
+				esc_html__( 'Leave empty to use the default text: "%s".', 'returngis-markdown-view-for-ai-agents' ),
 				esc_html( $default_text )
 			);
 			?>
@@ -293,7 +293,7 @@ class MD_For_Agents_Admin_Settings {
 				value="1"
 				<?php checked( '1', $settings['show_icon'] ); ?>
 			/>
-			<?php esc_html_e( 'Display the Markdown icon next to the button text.', 'markdown-view-for-ai-agents' ); ?>
+			<?php esc_html_e( 'Display the Markdown icon next to the button text.', 'returngis-markdown-view-for-ai-agents' ); ?>
 		</label>
 		<?php
 	}
@@ -313,7 +313,7 @@ class MD_For_Agents_Admin_Settings {
 			class="regular-text"
 		/>
 		<p class="description">
-			<?php esc_html_e( 'Space-separated CSS classes to add to the button element.', 'markdown-view-for-ai-agents' ); ?>
+			<?php esc_html_e( 'Space-separated CSS classes to add to the button element.', 'returngis-markdown-view-for-ai-agents' ); ?>
 		</p>
 		<?php
 	}
@@ -324,10 +324,10 @@ class MD_For_Agents_Admin_Settings {
 	public function render_button_position_field() {
 		$settings = self::get_settings();
 		$options  = array(
-			'before' => __( 'Before the content', 'markdown-view-for-ai-agents' ),
-			'after'  => __( 'After the content', 'markdown-view-for-ai-agents' ),
-			'both'   => __( 'Before and after the content', 'markdown-view-for-ai-agents' ),
-			'none'   => __( 'Hidden (endpoint only)', 'markdown-view-for-ai-agents' ),
+			'before' => __( 'Before the content', 'returngis-markdown-view-for-ai-agents' ),
+			'after'  => __( 'After the content', 'returngis-markdown-view-for-ai-agents' ),
+			'both'   => __( 'Before and after the content', 'returngis-markdown-view-for-ai-agents' ),
+			'none'   => __( 'Hidden (endpoint only)', 'returngis-markdown-view-for-ai-agents' ),
 		);
 		?>
 		<select
@@ -341,7 +341,7 @@ class MD_For_Agents_Admin_Settings {
 			<?php endforeach; ?>
 		</select>
 		<p class="description">
-			<?php esc_html_e( 'Choose where the button appears relative to the post content. "Hidden" keeps the ?format=markdown endpoint active without showing any button.', 'markdown-view-for-ai-agents' ); ?>
+			<?php esc_html_e( 'Choose where the button appears relative to the post content. "Hidden" keeps the ?format=markdown endpoint active without showing any button.', 'returngis-markdown-view-for-ai-agents' ); ?>
 		</p>
 		<?php
 	}

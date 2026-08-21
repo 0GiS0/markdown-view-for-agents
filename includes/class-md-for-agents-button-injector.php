@@ -78,7 +78,7 @@ class MD_For_Agents_Button_Injector {
 	private function build_button_html( $settings ) {
 		$url = add_query_arg( 'format', 'markdown', get_permalink() );
 
-		$default_text = esc_html__( 'View as Markdown', 'markdown-view-for-ai-agents' );
+		$default_text = esc_html__( 'View as Markdown', 'returngis-markdown-view-for-ai-agents' );
 
 		/**
 		 * Filter the button text.
@@ -132,7 +132,48 @@ class MD_For_Agents_Button_Injector {
 		 * @param string $url    The markdown URL.
 		 * @param string $text   The button text.
 		 */
-		return apply_filters( 'md_for_agents_button_html', $button, $url, $text );
+		$button = apply_filters( 'md_for_agents_button_html', $button, $url, $text );
+
+		return wp_kses( $button, $this->get_allowed_button_tags() );
+	}
+
+	/**
+	 * Return the allowed HTML tags and attributes for the injected button markup.
+	 *
+	 * @return array<string, array<string, bool>>
+	 */
+	private function get_allowed_button_tags() {
+		return array(
+			'div'  => array(
+				'class' => true,
+				'id'    => true,
+			),
+			'a'    => array(
+				'href'   => true,
+				'class'  => true,
+				'rel'    => true,
+				'title'  => true,
+				'target' => true,
+				'id'     => true,
+			),
+			'span' => array(
+				'class' => true,
+				'id'    => true,
+			),
+			'svg'  => array(
+				'class'       => true,
+				'xmlns'       => true,
+				'viewbox'     => true,
+				'width'       => true,
+				'height'      => true,
+				'fill'        => true,
+				'aria-hidden' => true,
+			),
+			'path' => array(
+				'd'    => true,
+				'fill' => true,
+			),
+		);
 	}
 
 	/**
