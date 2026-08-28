@@ -1,10 +1,10 @@
-=== Markdown View for AI Agents ===
+=== ReturnGIS Markdown View for AI Agents ===
 Contributors: 0gis0
 Tags: markdown, ai, agents, content, export
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Serve WordPress posts and pages as clean Markdown for AI agents and automation t
 
 == Description ==
 
-Markdown View for AI Agents adds a small button to singular posts and pages so visitors, crawlers, and AI agents can open a clean Markdown version of the content.
+ReturnGIS Markdown View for AI Agents adds a small button to singular posts and pages so visitors, crawlers, and AI agents can open a clean Markdown version of the content.
 
 The same Markdown output is also available programmatically by appending `?format=markdown` to a post or page URL.
 
@@ -35,7 +35,7 @@ Typical use cases:
 
 == Installation ==
 
-1. Upload the `markdown-view-for-ai-agents` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress admin.
+1. Upload the `returngis-markdown-view-for-ai-agents` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress admin.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Open any published post or page.
 4. Click the "View as Markdown" button, or append `?format=markdown` to the URL.
@@ -64,6 +64,10 @@ Yes. The plugin caches the generated Markdown for 1 hour using WordPress transie
 
 == Upgrade Notice ==
 
+= 1.0.6 =
+
+Addressed WordPress.org review feedback: renamed plugin to ReturnGIS Markdown View for AI Agents, updated slug, and sanitized injected button output.
+
 = 1.0.5 =
 
 Updated compatibility metadata for WordPress 7.0.
@@ -89,6 +93,10 @@ Improved WordPress.org readme content and public plugin metadata.
 Initial public release.
 
 == Changelog ==
+
+= 1.0.6 =
+* addressed WordPress.org review feedback for plugin name, slug, and text domain
+* sanitized button HTML markup returned from `the_content` filter callback using `wp_kses`
 
 = 1.0.5 =
 * updated the `Tested up to` header to WordPress 7.0
