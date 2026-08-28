@@ -1,5 +1,5 @@
 /**
- * Markdown View for AI Agents - Admin live preview
+ * ReturnGIS Markdown View for AI Agents - Admin live preview
  *
  * Updates the button preview in real-time as the user
  * changes settings on the admin page.

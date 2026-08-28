@@ -86,7 +86,7 @@
         "--path=/srv/wordpress",
         "plugin",
         "check",
-        "markdown-view-for-ai-agents",
+        "returngis-markdown-view-for-ai-agents",
         "--require=/srv/wordpress/wp-content/plugins/plugin-check/cli.php",
         "--exclude-directories=.devcontainer,.github,vendor,dist",
         "--exclude-files=.gitignore,install-git-hooks.sh,package-plugin.sh,phpcs.xml.dist,AGENTS.md"

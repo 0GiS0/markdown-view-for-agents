@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/php
 {
-	"name": "🧪 markdown-view-for-ai-agents",
+	"name": "🧪 returngis-markdown-view-for-ai-agents",
 	"dockerComposeFile": "compose.yml",
 	"service": "workspace",
 	"runServices": [
@@ -9,7 +9,7 @@
 		"wordpress",
 		"db"
 	],
-	"workspaceFolder": "/workspaces/markdown-view-for-ai-agents",
+	"workspaceFolder": "/workspaces/returngis-markdown-view-for-ai-agents",
 	"remoteUser": "vscode",
 	"shutdownAction": "stopCompose",
 
