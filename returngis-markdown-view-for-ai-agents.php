@@ -7,7 +7,7 @@
  * Plugin Name:       ReturnGIS Markdown View for AI Agents
  * Plugin URI:        https://github.com/0GiS0/markdown-view-for-agents
  * Description:       Serve WordPress posts and pages as clean Markdown for AI agents via a button or ?format=markdown.
- * Version:           1.0.6
+ * Version:           1.0.7
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Gisela Torres
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MD_FOR_AGENTS_VERSION', '1.0.6' );
+define( 'MD_FOR_AGENTS_VERSION', '1.0.7' );
 define( 'MD_FOR_AGENTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MD_FOR_AGENTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

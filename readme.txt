@@ -2,9 +2,9 @@
 Contributors: 0gis0
 Tags: markdown, ai, agents, content, export
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,10 @@ Yes. The plugin caches the generated Markdown for 1 hour using WordPress transie
 
 == Upgrade Notice ==
 
+= 1.0.7 =
+
+Updated the `Tested up to` header to WordPress 7.1.
+
 = 1.0.6 =
 
 Addressed WordPress.org review feedback: renamed plugin to ReturnGIS Markdown View for AI Agents, updated slug, and sanitized injected button output.
@@ -93,6 +97,9 @@ Improved WordPress.org readme content and public plugin metadata.
 Initial public release.
 
 == Changelog ==
+
+= 1.0.7 =
+* updated the `Tested up to` header to WordPress 7.1
 
 = 1.0.6 =
 * addressed WordPress.org review feedback for plugin name, slug, and text domain
