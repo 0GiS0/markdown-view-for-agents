@@ -1,0 +1,77 @@
+name: "🌐 Deploy to WordPress.org"
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag to publish (for example v1.0.7)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wporg-deploy
+  cancel-in-progress: false
+
+env:
+  SLUG: returngis-markdown-view-for-ai-agents
+  RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+
+jobs:
+  deploy:
+    name: "🚀 Publish to WordPress.org SVN"
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name, '-') }}
+
+    steps:
+      - name: "📥 Check out release tag"
+        uses: actions/checkout@v7
+        with:
+          ref: refs/tags/${{ env.RELEASE_TAG }}
+
+      - name: "🔍 Verify version alignment"
+        id: version
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Tag '$RELEASE_TAG' must use the format vX.Y.Z"
+            exit 1
+          fi
+          version="${RELEASE_TAG#v}"
+          header=$(sed -n 's/^[ *]*Version:[[:space:]]*//p' "$SLUG.php" | head -n1 | tr -d '[:space:]')
+          constant=$(sed -n "s/.*define( *'MD_FOR_AGENTS_VERSION', *'\([^']*\)'.*/\1/p" "$SLUG.php" | head -n1)
+          stable=$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt | head -n1 | tr -d '[:space:]')
+          echo "Tag: $version | Header: $header | Constant: $constant | Stable tag: $stable"
+          for value in "$header" "$constant" "$stable"; do
+            if [[ "$value" != "$version" ]]; then
+              echo "::error::Tag, plugin header, MD_FOR_AGENTS_VERSION and readme.txt Stable tag must all be $version"
+              exit 1
+            fi
+          done
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: "🛠️ Build plugin files and assets"
+        run: |
+          set -euo pipefail
+          chmod +x package-plugin.sh
+          ./package-plugin.sh
+          mkdir -p wporg-build wporg-assets
+          unzip -q "dist/$SLUG.zip" -d wporg-build
+          find .wordpress-org -maxdepth 1 -type f -name '*.png' -exec cp {} wporg-assets/ \;
+          echo "Plugin files:" && find "wporg-build/$SLUG" -type f | sort
+          echo "Assets:" && ls wporg-assets
+
+      - name: "🌐 Deploy to WordPress.org"
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: ${{ env.SLUG }}
+          VERSION: ${{ steps.version.outputs.version }}
+          BUILD_DIR: wporg-build/${{ env.SLUG }}
+          ASSETS_DIR: wporg-assets

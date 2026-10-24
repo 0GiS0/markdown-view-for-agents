@@ -29,9 +29,17 @@ This README is the GitHub landing page for releases, development, and creator li
 - Caches generated output with WordPress transients for faster repeated requests
 - Keeps your normal theme rendering unchanged outside the optional Markdown endpoint
 
+## Install from WordPress.org
+
+The plugin is listed in the WordPress.org Plugin Directory: [ReturnGIS Markdown View for AI Agents](https://wordpress.org/plugins/returngis-markdown-view-for-ai-agents/).
+
+1. In WordPress admin, go to Plugins > Add New Plugin.
+2. Search for "ReturnGIS Markdown View for AI Agents".
+3. Click Install Now, then Activate.
+
 ## Install from GitHub release
 
-This is the recommended path if you just want to use the plugin in WordPress.
+Use this path if you prefer to download the ZIP directly.
 
 1. Download the latest release asset: [returngis-markdown-view-for-ai-agents.zip](https://github.com/0GiS0/markdown-view-for-agents/releases/latest/download/returngis-markdown-view-for-ai-agents.zip)
 2. In WordPress admin, go to Plugins > Add New Plugin > Upload Plugin.
@@ -115,6 +123,7 @@ Article content in clean Markdown...
 
 ## Project links
 
+- [WordPress.org plugin page](https://wordpress.org/plugins/returngis-markdown-view-for-ai-agents/)
 - [Latest release](https://github.com/0GiS0/markdown-view-for-agents/releases/latest)
 - [Download latest ZIP](https://github.com/0GiS0/markdown-view-for-agents/releases/latest/download/returngis-markdown-view-for-ai-agents.zip)
 - [Development guide](https://github.com/0GiS0/markdown-view-for-agents/blob/main/docs/development.md)

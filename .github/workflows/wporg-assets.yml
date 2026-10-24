@@ -1,0 +1,43 @@
+name: "🖼️ Update WordPress.org readme and assets"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'readme.txt'
+      - '.wordpress-org/*.png'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wporg-deploy
+  cancel-in-progress: false
+
+jobs:
+  assets:
+    name: "🖼️ Sync readme and assets to SVN"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📥 Check out repository"
+        uses: actions/checkout@v7
+
+      - name: "🗂️ Prepare PNG assets"
+        run: |
+          set -euo pipefail
+          mkdir -p wporg-assets
+          find .wordpress-org -maxdepth 1 -type f -name '*.png' -exec cp {} wporg-assets/ \;
+          ls wporg-assets
+
+      - name: "🖼️ Update readme and assets"
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: returngis-markdown-view-for-ai-agents
+          ASSETS_DIR: wporg-assets
+          README_NAME: readme.txt
+          IGNORE_OTHER_FILES: true

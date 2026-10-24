@@ -42,7 +42,7 @@ If a pull request should not appear in the changelog, use `skip-changelog`.
 ## Versioning
 
 - Use SemVer for plugin versions and git tags.
-- Keep the plugin header version and the `MD_FOR_AGENTS_VERSION` constant in `returngis-markdown-view-for-ai-agents.php` aligned.
+- Keep the plugin header version and the `MD_FOR_AGENTS_VERSION` constant in `returngis-markdown-view-for-ai-agents.php` aligned with the `Stable tag` in `readme.txt`.
 - Decide the version bump in every release-facing pull request.
 
 SemVer rules for this repository:
@@ -62,16 +62,19 @@ Practical rule:
 - Create release tags from `main`, not from a feature branch.
 - The `🚀 Release` workflow is triggered by pushing a tag that starts with `v`.
 - The release workflow builds the ZIP, generates the changelog from merged pull requests, and publishes the GitHub release.
+- The `🌐 Deploy to WordPress.org` workflow is triggered by the same tag and publishes the plugin to the WordPress.org SVN repository. It fails if the tag, plugin version, `MD_FOR_AGENTS_VERSION`, and `readme.txt` `Stable tag` do not match. It can also be run manually with an existing tag.
+- The `🖼️ Update WordPress.org readme and assets` workflow syncs `readme.txt` and `.wordpress-org/*.png` to SVN when they change on `main`.
 
 Recommended release flow:
 
 1. Merge the release-ready pull request into `main`.
-2. Confirm the plugin version in `returngis-markdown-view-for-ai-agents.php` matches the intended release version.
+2. Confirm the plugin version in `returngis-markdown-view-for-ai-agents.php` and the `Stable tag` in `readme.txt` match the intended release version.
 3. Confirm merged pull requests included in the release have exactly one changelog category label, or `skip-changelog`.
 4. Review the current WordPress.org Detailed Plugin Guidelines before generating a new release: `https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/`.
 5. Search WordPress.org for the proposed plugin name and intended slug before any marketplace-facing release or submission to avoid collisions.
 6. Create and push the tag from `main`, for example `v1.0.1`.
 7. Verify the generated GitHub release body and attached ZIP.
+8. Verify the `🌐 Deploy to WordPress.org` run and the public listing at `https://wordpress.org/plugins/returngis-markdown-view-for-ai-agents/`.
 
 ## Changelog Notes
 
