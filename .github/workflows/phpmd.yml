@@ -44,10 +44,10 @@ jobs:
         uses: shivammathur/setup-php@aa1fe473f9c687b6fb896056d771232c0bc41161
         with:
           coverage: none
-          tools: phpmd
+          tools: phpmd:3.0.0
 
       - name: Run PHPMD
-        run: phpmd . sarif codesize --reportfile phpmd-results.sarif
+        run: phpmd analyze --ruleset codesize --format sarif --reportfile-sarif phpmd-results.sarif --no-progress .
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
